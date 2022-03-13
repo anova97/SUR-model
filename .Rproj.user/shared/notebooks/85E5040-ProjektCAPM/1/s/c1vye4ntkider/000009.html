@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<style>body{background-color:white;}</style>
+<script src="lib/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="lib/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
+<script src="lib/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="lib/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="lib/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="lib/kePrint-0.0.1/kePrint.js"></script>
+
+</head>
+<body>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; "><table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> Data </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> Otwarcie </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> Najwyzszy </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> Najnizszy </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> Zamkniecie </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> Wolumen </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 2010-01-31 </td>
+   <td style="text-align:right;"> 40156.10 </td>
+   <td style="text-align:right;"> 41725.20 </td>
+   <td style="text-align:right;"> 39634.30 </td>
+   <td style="text-align:right;"> 40058.30 </td>
+   <td style="text-align:right;"> 1545940868 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2010-02-28 </td>
+   <td style="text-align:right;"> 39828.60 </td>
+   <td style="text-align:right;"> 40226.30 </td>
+   <td style="text-align:right;"> 37038.90 </td>
+   <td style="text-align:right;"> 38708.60 </td>
+   <td style="text-align:right;"> 1600201708 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2010-03-31 </td>
+   <td style="text-align:right;"> 38937.60 </td>
+   <td style="text-align:right;"> 42731.40 </td>
+   <td style="text-align:right;"> 38702.20 </td>
+   <td style="text-align:right;"> 42446.50 </td>
+   <td style="text-align:right;"> 2918507628 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2010-04-30 </td>
+   <td style="text-align:right;"> 42644.80 </td>
+   <td style="text-align:right;"> 44302.50 </td>
+   <td style="text-align:right;"> 42131.90 </td>
+   <td style="text-align:right;"> 43295.20 </td>
+   <td style="text-align:right;"> 1667119190 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2010-05-31 </td>
+   <td style="text-align:right;"> 43527.90 </td>
+   <td style="text-align:right;"> 43533.80 </td>
+   <td style="text-align:right;"> 38900.20 </td>
+   <td style="text-align:right;"> 41530.10 </td>
+   <td style="text-align:right;"> 1884074256 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2010-06-30 </td>
+   <td style="text-align:right;"> 41336.00 </td>
+   <td style="text-align:right;"> 41425.10 </td>
+   <td style="text-align:right;"> 39269.60 </td>
+   <td style="text-align:right;"> 39392.50 </td>
+   <td style="text-align:right;"> 1583407086 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2010-07-31 </td>
+   <td style="text-align:right;"> 39123.20 </td>
+   <td style="text-align:right;"> 42878.70 </td>
+   <td style="text-align:right;"> 39003.90 </td>
+   <td style="text-align:right;"> 42464.70 </td>
+   <td style="text-align:right;"> 1632143292 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2010-08-31 </td>
+   <td style="text-align:right;"> 42689.30 </td>
+   <td style="text-align:right;"> 43669.05 </td>
+   <td style="text-align:right;"> 41438.11 </td>
+   <td style="text-align:right;"> 42215.66 </td>
+   <td style="text-align:right;"> 1511062074 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2010-09-30 </td>
+   <td style="text-align:right;"> 42143.27 </td>
+   <td style="text-align:right;"> 45236.72 </td>
+   <td style="text-align:right;"> 41954.12 </td>
+   <td style="text-align:right;"> 45236.72 </td>
+   <td style="text-align:right;"> 2093754038 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2010-10-31 </td>
+   <td style="text-align:right;"> 45124.44 </td>
+   <td style="text-align:right;"> 46440.96 </td>
+   <td style="text-align:right;"> 45035.39 </td>
+   <td style="text-align:right;"> 46229.60 </td>
+   <td style="text-align:right;"> 2030002908 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2010-11-30 </td>
+   <td style="text-align:right;"> 46334.42 </td>
+   <td style="text-align:right;"> 47738.65 </td>
+   <td style="text-align:right;"> 45167.16 </td>
+   <td style="text-align:right;"> 45361.07 </td>
+   <td style="text-align:right;"> 1998897958 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2010-12-31 </td>
+   <td style="text-align:right;"> 45717.32 </td>
+   <td style="text-align:right;"> 47911.57 </td>
+   <td style="text-align:right;"> 45664.91 </td>
+   <td style="text-align:right;"> 47489.91 </td>
+   <td style="text-align:right;"> 1670788200 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2011-01-31 </td>
+   <td style="text-align:right;"> 47649.12 </td>
+   <td style="text-align:right;"> 48531.41 </td>
+   <td style="text-align:right;"> 46148.55 </td>
+   <td style="text-align:right;"> 47156.76 </td>
+   <td style="text-align:right;"> 1276425095 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2011-02-28 </td>
+   <td style="text-align:right;"> 47439.83 </td>
+   <td style="text-align:right;"> 48177.49 </td>
+   <td style="text-align:right;"> 46300.50 </td>
+   <td style="text-align:right;"> 47540.91 </td>
+   <td style="text-align:right;"> 2056631602 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2011-03-31 </td>
+   <td style="text-align:right;"> 47597.55 </td>
+   <td style="text-align:right;"> 49073.05 </td>
+   <td style="text-align:right;"> 46712.51 </td>
+   <td style="text-align:right;"> 48729.83 </td>
+   <td style="text-align:right;"> 2177095621 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2011-04-30 </td>
+   <td style="text-align:right;"> 48860.48 </td>
+   <td style="text-align:right;"> 50501.79 </td>
+   <td style="text-align:right;"> 48858.91 </td>
+   <td style="text-align:right;"> 50008.98 </td>
+   <td style="text-align:right;"> 2033134098 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2011-05-31 </td>
+   <td style="text-align:right;"> 50097.45 </td>
+   <td style="text-align:right;"> 50134.02 </td>
+   <td style="text-align:right;"> 48155.21 </td>
+   <td style="text-align:right;"> 50025.61 </td>
+   <td style="text-align:right;"> 2366819528 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2011-06-30 </td>
+   <td style="text-align:right;"> 50164.33 </td>
+   <td style="text-align:right;"> 50164.33 </td>
+   <td style="text-align:right;"> 47575.55 </td>
+   <td style="text-align:right;"> 48414.36 </td>
+   <td style="text-align:right;"> 1851157139 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2011-07-31 </td>
+   <td style="text-align:right;"> 48465.55 </td>
+   <td style="text-align:right;"> 49093.63 </td>
+   <td style="text-align:right;"> 46345.68 </td>
+   <td style="text-align:right;"> 47152.63 </td>
+   <td style="text-align:right;"> 1575323110 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2011-08-31 </td>
+   <td style="text-align:right;"> 47389.29 </td>
+   <td style="text-align:right;"> 47508.78 </td>
+   <td style="text-align:right;"> 36252.38 </td>
+   <td style="text-align:right;"> 42222.38 </td>
+   <td style="text-align:right;"> 3159073371 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2011-09-30 </td>
+   <td style="text-align:right;"> 41971.50 </td>
+   <td style="text-align:right;"> 41981.41 </td>
+   <td style="text-align:right;"> 35348.98 </td>
+   <td style="text-align:right;"> 38268.75 </td>
+   <td style="text-align:right;"> 2957312575 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2011-10-31 </td>
+   <td style="text-align:right;"> 37377.43 </td>
+   <td style="text-align:right;"> 41943.65 </td>
+   <td style="text-align:right;"> 36224.64 </td>
+   <td style="text-align:right;"> 41160.66 </td>
+   <td style="text-align:right;"> 3205172898 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2011-11-30 </td>
+   <td style="text-align:right;"> 40141.39 </td>
+   <td style="text-align:right;"> 41669.89 </td>
+   <td style="text-align:right;"> 36971.00 </td>
+   <td style="text-align:right;"> 39502.02 </td>
+   <td style="text-align:right;"> 3112851280 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2011-12-31 </td>
+   <td style="text-align:right;"> 39414.26 </td>
+   <td style="text-align:right;"> 39780.13 </td>
+   <td style="text-align:right;"> 36539.93 </td>
+   <td style="text-align:right;"> 37595.44 </td>
+   <td style="text-align:right;"> 2278127598 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2012-01-31 </td>
+   <td style="text-align:right;"> 37716.67 </td>
+   <td style="text-align:right;"> 41236.15 </td>
+   <td style="text-align:right;"> 37329.42 </td>
+   <td style="text-align:right;"> 40927.75 </td>
+   <td style="text-align:right;"> 3773273173 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2012-02-29 </td>
+   <td style="text-align:right;"> 41027.36 </td>
+   <td style="text-align:right;"> 42438.54 </td>
+   <td style="text-align:right;"> 41002.72 </td>
+   <td style="text-align:right;"> 41560.55 </td>
+   <td style="text-align:right;"> 3654004888 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2012-03-31 </td>
+   <td style="text-align:right;"> 41285.02 </td>
+   <td style="text-align:right;"> 42400.46 </td>
+   <td style="text-align:right;"> 40273.28 </td>
+   <td style="text-align:right;"> 41267.16 </td>
+   <td style="text-align:right;"> 2800872537 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2012-04-30 </td>
+   <td style="text-align:right;"> 41285.62 </td>
+   <td style="text-align:right;"> 41678.83 </td>
+   <td style="text-align:right;"> 38908.58 </td>
+   <td style="text-align:right;"> 40273.65 </td>
+   <td style="text-align:right;"> 1884984146 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2012-05-31 </td>
+   <td style="text-align:right;"> 40396.67 </td>
+   <td style="text-align:right;"> 40434.21 </td>
+   <td style="text-align:right;"> 36483.38 </td>
+   <td style="text-align:right;"> 37793.58 </td>
+   <td style="text-align:right;"> 2049639333 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2012-06-30 </td>
+   <td style="text-align:right;"> 37675.74 </td>
+   <td style="text-align:right;"> 40810.88 </td>
+   <td style="text-align:right;"> 36653.28 </td>
+   <td style="text-align:right;"> 40810.88 </td>
+   <td style="text-align:right;"> 2047716811 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2012-07-31 </td>
+   <td style="text-align:right;"> 40795.17 </td>
+   <td style="text-align:right;"> 41217.07 </td>
+   <td style="text-align:right;"> 38810.22 </td>
+   <td style="text-align:right;"> 40163.91 </td>
+   <td style="text-align:right;"> 2240910956 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2012-08-31 </td>
+   <td style="text-align:right;"> 40102.80 </td>
+   <td style="text-align:right;"> 42521.16 </td>
+   <td style="text-align:right;"> 39792.44 </td>
+   <td style="text-align:right;"> 41573.57 </td>
+   <td style="text-align:right;"> 1597180606 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2012-09-30 </td>
+   <td style="text-align:right;"> 41629.19 </td>
+   <td style="text-align:right;"> 44217.32 </td>
+   <td style="text-align:right;"> 41394.20 </td>
+   <td style="text-align:right;"> 43739.81 </td>
+   <td style="text-align:right;"> 2063431130 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2012-10-31 </td>
+   <td style="text-align:right;"> 43631.67 </td>
+   <td style="text-align:right;"> 44617.35 </td>
+   <td style="text-align:right;"> 43005.98 </td>
+   <td style="text-align:right;"> 43232.44 </td>
+   <td style="text-align:right;"> 3678397050 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2012-11-30 </td>
+   <td style="text-align:right;"> 43408.53 </td>
+   <td style="text-align:right;"> 45014.74 </td>
+   <td style="text-align:right;"> 42930.77 </td>
+   <td style="text-align:right;"> 45014.74 </td>
+   <td style="text-align:right;"> 2075671463 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2012-12-31 </td>
+   <td style="text-align:right;"> 44985.99 </td>
+   <td style="text-align:right;"> 47941.82 </td>
+   <td style="text-align:right;"> 44971.25 </td>
+   <td style="text-align:right;"> 47460.59 </td>
+   <td style="text-align:right;"> 1985700291 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2013-01-31 </td>
+   <td style="text-align:right;"> 47961.62 </td>
+   <td style="text-align:right;"> 48222.72 </td>
+   <td style="text-align:right;"> 46697.05 </td>
+   <td style="text-align:right;"> 46840.15 </td>
+   <td style="text-align:right;"> 2929486386 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2013-02-28 </td>
+   <td style="text-align:right;"> 46937.60 </td>
+   <td style="text-align:right;"> 47296.06 </td>
+   <td style="text-align:right;"> 45420.61 </td>
+   <td style="text-align:right;"> 46280.36 </td>
+   <td style="text-align:right;"> 2196411431 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2013-03-31 </td>
+   <td style="text-align:right;"> 46148.65 </td>
+   <td style="text-align:right;"> 47519.43 </td>
+   <td style="text-align:right;"> 44428.75 </td>
+   <td style="text-align:right;"> 45147.57 </td>
+   <td style="text-align:right;"> 2221704284 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2013-04-30 </td>
+   <td style="text-align:right;"> 45239.35 </td>
+   <td style="text-align:right;"> 45688.49 </td>
+   <td style="text-align:right;"> 42842.07 </td>
+   <td style="text-align:right;"> 44162.18 </td>
+   <td style="text-align:right;"> 3143825359 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2013-05-31 </td>
+   <td style="text-align:right;"> 44103.66 </td>
+   <td style="text-align:right;"> 47841.39 </td>
+   <td style="text-align:right;"> 43991.51 </td>
+   <td style="text-align:right;"> 47806.34 </td>
+   <td style="text-align:right;"> 1810837324 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2013-06-30 </td>
+   <td style="text-align:right;"> 47398.14 </td>
+   <td style="text-align:right;"> 48572.75 </td>
+   <td style="text-align:right;"> 43329.16 </td>
+   <td style="text-align:right;"> 44747.79 </td>
+   <td style="text-align:right;"> 2026235989 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2013-07-31 </td>
+   <td style="text-align:right;"> 44759.97 </td>
+   <td style="text-align:right;"> 47239.85 </td>
+   <td style="text-align:right;"> 44099.12 </td>
+   <td style="text-align:right;"> 46925.65 </td>
+   <td style="text-align:right;"> 1617221125 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2013-08-31 </td>
+   <td style="text-align:right;"> 47210.72 </td>
+   <td style="text-align:right;"> 50359.55 </td>
+   <td style="text-align:right;"> 47149.82 </td>
+   <td style="text-align:right;"> 48871.98 </td>
+   <td style="text-align:right;"> 1821342801 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2013-09-30 </td>
+   <td style="text-align:right;"> 49250.57 </td>
+   <td style="text-align:right;"> 51149.71 </td>
+   <td style="text-align:right;"> 45017.11 </td>
+   <td style="text-align:right;"> 50301.85 </td>
+   <td style="text-align:right;"> 2471386016 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2013-10-31 </td>
+   <td style="text-align:right;"> 50087.47 </td>
+   <td style="text-align:right;"> 54725.86 </td>
+   <td style="text-align:right;"> 49899.25 </td>
+   <td style="text-align:right;"> 53607.86 </td>
+   <td style="text-align:right;"> 2504405441 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2013-11-30 </td>
+   <td style="text-align:right;"> 53886.25 </td>
+   <td style="text-align:right;"> 55384.83 </td>
+   <td style="text-align:right;"> 52554.81 </td>
+   <td style="text-align:right;"> 54704.89 </td>
+   <td style="text-align:right;"> 1869917153 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2013-12-31 </td>
+   <td style="text-align:right;"> 54627.26 </td>
+   <td style="text-align:right;"> 54790.24 </td>
+   <td style="text-align:right;"> 50409.52 </td>
+   <td style="text-align:right;"> 51284.25 </td>
+   <td style="text-align:right;"> 1635395438 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2014-01-31 </td>
+   <td style="text-align:right;"> 51670.42 </td>
+   <td style="text-align:right;"> 52074.67 </td>
+   <td style="text-align:right;"> 49320.57 </td>
+   <td style="text-align:right;"> 50831.61 </td>
+   <td style="text-align:right;"> 2305838876 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2014-02-28 </td>
+   <td style="text-align:right;"> 50934.20 </td>
+   <td style="text-align:right;"> 54075.89 </td>
+   <td style="text-align:right;"> 50494.52 </td>
+   <td style="text-align:right;"> 53811.30 </td>
+   <td style="text-align:right;"> 2190641829 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2014-03-31 </td>
+   <td style="text-align:right;"> 51739.27 </td>
+   <td style="text-align:right;"> 52697.98 </td>
+   <td style="text-align:right;"> 48765.47 </td>
+   <td style="text-align:right;"> 52373.47 </td>
+   <td style="text-align:right;"> 2300035391 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2014-04-30 </td>
+   <td style="text-align:right;"> 52358.13 </td>
+   <td style="text-align:right;"> 52871.20 </td>
+   <td style="text-align:right;"> 50913.63 </td>
+   <td style="text-align:right;"> 51892.77 </td>
+   <td style="text-align:right;"> 876852488 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2014-05-31 </td>
+   <td style="text-align:right;"> 51831.54 </td>
+   <td style="text-align:right;"> 52754.81 </td>
+   <td style="text-align:right;"> 50258.57 </td>
+   <td style="text-align:right;"> 52066.97 </td>
+   <td style="text-align:right;"> 1064763315 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2014-06-30 </td>
+   <td style="text-align:right;"> 52193.82 </td>
+   <td style="text-align:right;"> 53436.07 </td>
+   <td style="text-align:right;"> 51649.04 </td>
+   <td style="text-align:right;"> 51934.94 </td>
+   <td style="text-align:right;"> 809799949 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2014-07-31 </td>
+   <td style="text-align:right;"> 51932.32 </td>
+   <td style="text-align:right;"> 51980.27 </td>
+   <td style="text-align:right;"> 49980.81 </td>
+   <td style="text-align:right;"> 50037.12 </td>
+   <td style="text-align:right;"> 796716121 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2014-08-31 </td>
+   <td style="text-align:right;"> 50082.23 </td>
+   <td style="text-align:right;"> 53008.00 </td>
+   <td style="text-align:right;"> 49321.83 </td>
+   <td style="text-align:right;"> 51868.77 </td>
+   <td style="text-align:right;"> 718333193 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2014-09-30 </td>
+   <td style="text-align:right;"> 52068.19 </td>
+   <td style="text-align:right;"> 55687.59 </td>
+   <td style="text-align:right;"> 52068.19 </td>
+   <td style="text-align:right;"> 54878.58 </td>
+   <td style="text-align:right;"> 1105339216 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2014-10-31 </td>
+   <td style="text-align:right;"> 54715.88 </td>
+   <td style="text-align:right;"> 54907.49 </td>
+   <td style="text-align:right;"> 51849.26 </td>
+   <td style="text-align:right;"> 53949.58 </td>
+   <td style="text-align:right;"> 978202906 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2014-11-30 </td>
+   <td style="text-align:right;"> 53922.18 </td>
+   <td style="text-align:right;"> 54145.86 </td>
+   <td style="text-align:right;"> 52663.34 </td>
+   <td style="text-align:right;"> 53247.07 </td>
+   <td style="text-align:right;"> 694643005 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2014-12-31 </td>
+   <td style="text-align:right;"> 53050.26 </td>
+   <td style="text-align:right;"> 54030.53 </td>
+   <td style="text-align:right;"> 50182.53 </td>
+   <td style="text-align:right;"> 51416.08 </td>
+   <td style="text-align:right;"> 917978325 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2015-01-31 </td>
+   <td style="text-align:right;"> 51598.39 </td>
+   <td style="text-align:right;"> 52585.44 </td>
+   <td style="text-align:right;"> 49931.45 </td>
+   <td style="text-align:right;"> 52102.39 </td>
+   <td style="text-align:right;"> 891366809 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2015-02-28 </td>
+   <td style="text-align:right;"> 52197.70 </td>
+   <td style="text-align:right;"> 53304.77 </td>
+   <td style="text-align:right;"> 51595.99 </td>
+   <td style="text-align:right;"> 53304.21 </td>
+   <td style="text-align:right;"> 802302677 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2015-03-31 </td>
+   <td style="text-align:right;"> 53392.85 </td>
+   <td style="text-align:right;"> 54564.54 </td>
+   <td style="text-align:right;"> 52499.33 </td>
+   <td style="text-align:right;"> 54091.32 </td>
+   <td style="text-align:right;"> 964119729 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2015-04-30 </td>
+   <td style="text-align:right;"> 53985.99 </td>
+   <td style="text-align:right;"> 57192.85 </td>
+   <td style="text-align:right;"> 53953.71 </td>
+   <td style="text-align:right;"> 56477.69 </td>
+   <td style="text-align:right;"> 879693553 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2015-05-31 </td>
+   <td style="text-align:right;"> 56759.18 </td>
+   <td style="text-align:right;"> 57460.44 </td>
+   <td style="text-align:right;"> 55498.11 </td>
+   <td style="text-align:right;"> 55531.79 </td>
+   <td style="text-align:right;"> 804011640 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2015-06-30 </td>
+   <td style="text-align:right;"> 55599.98 </td>
+   <td style="text-align:right;"> 55761.48 </td>
+   <td style="text-align:right;"> 51817.29 </td>
+   <td style="text-align:right;"> 53328.98 </td>
+   <td style="text-align:right;"> 740125249 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2015-07-31 </td>
+   <td style="text-align:right;"> 53330.19 </td>
+   <td style="text-align:right;"> 53687.90 </td>
+   <td style="text-align:right;"> 51240.77 </td>
+   <td style="text-align:right;"> 52750.94 </td>
+   <td style="text-align:right;"> 837575643 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2015-08-31 </td>
+   <td style="text-align:right;"> 52653.31 </td>
+   <td style="text-align:right;"> 53694.88 </td>
+   <td style="text-align:right;"> 48048.05 </td>
+   <td style="text-align:right;"> 51280.38 </td>
+   <td style="text-align:right;"> 1332045184 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2015-09-30 </td>
+   <td style="text-align:right;"> 50854.10 </td>
+   <td style="text-align:right;"> 51880.22 </td>
+   <td style="text-align:right;"> 48612.63 </td>
+   <td style="text-align:right;"> 49824.59 </td>
+   <td style="text-align:right;"> 1308541210 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2015-10-31 </td>
+   <td style="text-align:right;"> 50010.87 </td>
+   <td style="text-align:right;"> 51909.32 </td>
+   <td style="text-align:right;"> 49117.34 </td>
+   <td style="text-align:right;"> 50271.65 </td>
+   <td style="text-align:right;"> 1161722236 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2015-11-30 </td>
+   <td style="text-align:right;"> 50320.78 </td>
+   <td style="text-align:right;"> 50776.76 </td>
+   <td style="text-align:right;"> 47603.61 </td>
+   <td style="text-align:right;"> 47915.91 </td>
+   <td style="text-align:right;"> 1035758691 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2015-12-31 </td>
+   <td style="text-align:right;"> 48057.16 </td>
+   <td style="text-align:right;"> 48267.19 </td>
+   <td style="text-align:right;"> 43724.52 </td>
+   <td style="text-align:right;"> 46467.38 </td>
+   <td style="text-align:right;"> 1330886483 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2016-01-31 </td>
+   <td style="text-align:right;"> 45701.18 </td>
+   <td style="text-align:right;"> 45701.18 </td>
+   <td style="text-align:right;"> 41747.01 </td>
+   <td style="text-align:right;"> 44290.05 </td>
+   <td style="text-align:right;"> 1188642742 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2016-02-29 </td>
+   <td style="text-align:right;"> 44257.20 </td>
+   <td style="text-align:right;"> 46278.94 </td>
+   <td style="text-align:right;"> 43230.24 </td>
+   <td style="text-align:right;"> 45430.29 </td>
+   <td style="text-align:right;"> 1149104223 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2016-03-31 </td>
+   <td style="text-align:right;"> 45480.07 </td>
+   <td style="text-align:right;"> 49017.35 </td>
+   <td style="text-align:right;"> 44843.16 </td>
+   <td style="text-align:right;"> 49017.35 </td>
+   <td style="text-align:right;"> 1271324238 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2016-04-30 </td>
+   <td style="text-align:right;"> 48745.62 </td>
+   <td style="text-align:right;"> 48847.22 </td>
+   <td style="text-align:right;"> 47025.11 </td>
+   <td style="text-align:right;"> 47641.99 </td>
+   <td style="text-align:right;"> 954472881 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2016-05-31 </td>
+   <td style="text-align:right;"> 47681.11 </td>
+   <td style="text-align:right;"> 47954.08 </td>
+   <td style="text-align:right;"> 45549.91 </td>
+   <td style="text-align:right;"> 45844.15 </td>
+   <td style="text-align:right;"> 777377123 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2016-06-30 </td>
+   <td style="text-align:right;"> 45851.15 </td>
+   <td style="text-align:right;"> 46826.85 </td>
+   <td style="text-align:right;"> 42812.99 </td>
+   <td style="text-align:right;"> 44748.53 </td>
+   <td style="text-align:right;"> 995400462 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2016-07-31 </td>
+   <td style="text-align:right;"> 44973.52 </td>
+   <td style="text-align:right;"> 47069.57 </td>
+   <td style="text-align:right;"> 43534.02 </td>
+   <td style="text-align:right;"> 46171.72 </td>
+   <td style="text-align:right;"> 823654853 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2016-08-31 </td>
+   <td style="text-align:right;"> 46328.40 </td>
+   <td style="text-align:right;"> 48776.53 </td>
+   <td style="text-align:right;"> 46052.49 </td>
+   <td style="text-align:right;"> 47935.10 </td>
+   <td style="text-align:right;"> 1082928793 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2016-09-30 </td>
+   <td style="text-align:right;"> 48045.86 </td>
+   <td style="text-align:right;"> 48636.67 </td>
+   <td style="text-align:right;"> 46321.24 </td>
+   <td style="text-align:right;"> 47084.94 </td>
+   <td style="text-align:right;"> 1038462206 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2016-10-31 </td>
+   <td style="text-align:right;"> 47169.38 </td>
+   <td style="text-align:right;"> 49331.67 </td>
+   <td style="text-align:right;"> 47106.19 </td>
+   <td style="text-align:right;"> 49158.80 </td>
+   <td style="text-align:right;"> 921694855 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2016-11-30 </td>
+   <td style="text-align:right;"> 48853.57 </td>
+   <td style="text-align:right;"> 49129.58 </td>
+   <td style="text-align:right;"> 46674.28 </td>
+   <td style="text-align:right;"> 48618.64 </td>
+   <td style="text-align:right;"> 997949278 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2016-12-31 </td>
+   <td style="text-align:right;"> 48696.12 </td>
+   <td style="text-align:right;"> 51921.03 </td>
+   <td style="text-align:right;"> 48342.54 </td>
+   <td style="text-align:right;"> 51754.03 </td>
+   <td style="text-align:right;"> 1050879725 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2017-01-31 </td>
+   <td style="text-align:right;"> 51743.43 </td>
+   <td style="text-align:right;"> 55929.47 </td>
+   <td style="text-align:right;"> 51608.44 </td>
+   <td style="text-align:right;"> 55232.32 </td>
+   <td style="text-align:right;"> 1099959644 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2017-02-28 </td>
+   <td style="text-align:right;"> 55603.28 </td>
+   <td style="text-align:right;"> 59844.93 </td>
+   <td style="text-align:right;"> 55194.67 </td>
+   <td style="text-align:right;"> 58300.37 </td>
+   <td style="text-align:right;"> 1240027967 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2017-03-31 </td>
+   <td style="text-align:right;"> 58679.10 </td>
+   <td style="text-align:right;"> 60631.65 </td>
+   <td style="text-align:right;"> 57558.86 </td>
+   <td style="text-align:right;"> 57911.31 </td>
+   <td style="text-align:right;"> 1711498067 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2017-04-30 </td>
+   <td style="text-align:right;"> 58258.30 </td>
+   <td style="text-align:right;"> 62039.43 </td>
+   <td style="text-align:right;"> 58166.29 </td>
+   <td style="text-align:right;"> 61644.56 </td>
+   <td style="text-align:right;"> 1071184136 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2017-05-31 </td>
+   <td style="text-align:right;"> 61932.93 </td>
+   <td style="text-align:right;"> 62666.49 </td>
+   <td style="text-align:right;"> 59143.38 </td>
+   <td style="text-align:right;"> 60092.07 </td>
+   <td style="text-align:right;"> 1228213541 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2017-06-30 </td>
+   <td style="text-align:right;"> 60286.68 </td>
+   <td style="text-align:right;"> 62096.24 </td>
+   <td style="text-align:right;"> 59859.02 </td>
+   <td style="text-align:right;"> 61018.36 </td>
+   <td style="text-align:right;"> 849087283 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2017-07-31 </td>
+   <td style="text-align:right;"> 61126.43 </td>
+   <td style="text-align:right;"> 62853.78 </td>
+   <td style="text-align:right;"> 60619.69 </td>
+   <td style="text-align:right;"> 62595.76 </td>
+   <td style="text-align:right;"> 742069801 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2017-08-31 </td>
+   <td style="text-align:right;"> 62691.86 </td>
+   <td style="text-align:right;"> 65204.27 </td>
+   <td style="text-align:right;"> 61675.81 </td>
+   <td style="text-align:right;"> 64973.76 </td>
+   <td style="text-align:right;"> 1496174871 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2017-09-30 </td>
+   <td style="text-align:right;"> 64972.34 </td>
+   <td style="text-align:right;"> 65611.21 </td>
+   <td style="text-align:right;"> 63498.26 </td>
+   <td style="text-align:right;"> 64289.69 </td>
+   <td style="text-align:right;"> 1014557754 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2017-10-31 </td>
+   <td style="text-align:right;"> 64552.98 </td>
+   <td style="text-align:right;"> 66053.82 </td>
+   <td style="text-align:right;"> 62968.85 </td>
+   <td style="text-align:right;"> 64866.57 </td>
+   <td style="text-align:right;"> 1070063640 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2017-11-30 </td>
+   <td style="text-align:right;"> 65020.01 </td>
+   <td style="text-align:right;"> 65633.77 </td>
+   <td style="text-align:right;"> 62214.08 </td>
+   <td style="text-align:right;"> 62440.31 </td>
+   <td style="text-align:right;"> 1003721652 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2017-12-31 </td>
+   <td style="text-align:right;"> 62683.89 </td>
+   <td style="text-align:right;"> 64069.86 </td>
+   <td style="text-align:right;"> 61631.16 </td>
+   <td style="text-align:right;"> 63746.20 </td>
+   <td style="text-align:right;"> 901075919 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2018-01-31 </td>
+   <td style="text-align:right;"> 63988.33 </td>
+   <td style="text-align:right;"> 67933.05 </td>
+   <td style="text-align:right;"> 63269.89 </td>
+   <td style="text-align:right;"> 66048.17 </td>
+   <td style="text-align:right;"> 834732734 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2018-02-28 </td>
+   <td style="text-align:right;"> 66221.11 </td>
+   <td style="text-align:right;"> 66524.54 </td>
+   <td style="text-align:right;"> 61686.93 </td>
+   <td style="text-align:right;"> 61703.18 </td>
+   <td style="text-align:right;"> 726350137 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2018-03-31 </td>
+   <td style="text-align:right;"> 61586.44 </td>
+   <td style="text-align:right;"> 62264.72 </td>
+   <td style="text-align:right;"> 57947.92 </td>
+   <td style="text-align:right;"> 58377.42 </td>
+   <td style="text-align:right;"> 821655084 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2018-04-30 </td>
+   <td style="text-align:right;"> 58375.85 </td>
+   <td style="text-align:right;"> 61008.88 </td>
+   <td style="text-align:right;"> 58173.30 </td>
+   <td style="text-align:right;"> 59932.46 </td>
+   <td style="text-align:right;"> 735204298 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2018-05-31 </td>
+   <td style="text-align:right;"> 59953.59 </td>
+   <td style="text-align:right;"> 60874.54 </td>
+   <td style="text-align:right;"> 57043.60 </td>
+   <td style="text-align:right;"> 57282.73 </td>
+   <td style="text-align:right;"> 1009659005 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2018-06-30 </td>
+   <td style="text-align:right;"> 57295.48 </td>
+   <td style="text-align:right;"> 59699.84 </td>
+   <td style="text-align:right;"> 55124.54 </td>
+   <td style="text-align:right;"> 55954.44 </td>
+   <td style="text-align:right;"> 857192099 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2018-07-31 </td>
+   <td style="text-align:right;"> 55490.11 </td>
+   <td style="text-align:right;"> 60378.92 </td>
+   <td style="text-align:right;"> 55202.31 </td>
+   <td style="text-align:right;"> 59964.47 </td>
+   <td style="text-align:right;"> 741922746 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2018-08-31 </td>
+   <td style="text-align:right;"> 59969.04 </td>
+   <td style="text-align:right;"> 61604.01 </td>
+   <td style="text-align:right;"> 58117.88 </td>
+   <td style="text-align:right;"> 60201.08 </td>
+   <td style="text-align:right;"> 996083076 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2018-09-30 </td>
+   <td style="text-align:right;"> 60218.66 </td>
+   <td style="text-align:right;"> 60840.72 </td>
+   <td style="text-align:right;"> 56858.60 </td>
+   <td style="text-align:right;"> 58974.76 </td>
+   <td style="text-align:right;"> 1376239094 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2018-10-31 </td>
+   <td style="text-align:right;"> 59152.37 </td>
+   <td style="text-align:right;"> 59647.34 </td>
+   <td style="text-align:right;"> 54027.32 </td>
+   <td style="text-align:right;"> 55312.71 </td>
+   <td style="text-align:right;"> 845219644 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2018-11-30 </td>
+   <td style="text-align:right;"> 56001.09 </td>
+   <td style="text-align:right;"> 58412.94 </td>
+   <td style="text-align:right;"> 54866.97 </td>
+   <td style="text-align:right;"> 58203.39 </td>
+   <td style="text-align:right;"> 1332417381 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2018-12-31 </td>
+   <td style="text-align:right;"> 58933.32 </td>
+   <td style="text-align:right;"> 59707.73 </td>
+   <td style="text-align:right;"> 56655.36 </td>
+   <td style="text-align:right;"> 57690.50 </td>
+   <td style="text-align:right;"> 1085519467 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2019-01-31 </td>
+   <td style="text-align:right;"> 57494.06 </td>
+   <td style="text-align:right;"> 61128.08 </td>
+   <td style="text-align:right;"> 57090.34 </td>
+   <td style="text-align:right;"> 60367.42 </td>
+   <td style="text-align:right;"> 838306824 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2019-02-28 </td>
+   <td style="text-align:right;"> 60455.30 </td>
+   <td style="text-align:right;"> 61402.29 </td>
+   <td style="text-align:right;"> 59276.26 </td>
+   <td style="text-align:right;"> 59903.70 </td>
+   <td style="text-align:right;"> 778768045 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2019-03-31 </td>
+   <td style="text-align:right;"> 60229.65 </td>
+   <td style="text-align:right;"> 61091.60 </td>
+   <td style="text-align:right;"> 59178.82 </td>
+   <td style="text-align:right;"> 59668.03 </td>
+   <td style="text-align:right;"> 773283285 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2019-04-30 </td>
+   <td style="text-align:right;"> 60060.64 </td>
+   <td style="text-align:right;"> 62009.90 </td>
+   <td style="text-align:right;"> 59912.71 </td>
+   <td style="text-align:right;"> 60145.50 </td>
+   <td style="text-align:right;"> 606928278 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2019-05-31 </td>
+   <td style="text-align:right;"> 60086.35 </td>
+   <td style="text-align:right;"> 60145.15 </td>
+   <td style="text-align:right;"> 55999.93 </td>
+   <td style="text-align:right;"> 57909.95 </td>
+   <td style="text-align:right;"> 761448616 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2019-06-30 </td>
+   <td style="text-align:right;"> 57829.53 </td>
+   <td style="text-align:right;"> 60536.87 </td>
+   <td style="text-align:right;"> 57524.06 </td>
+   <td style="text-align:right;"> 60187.43 </td>
+   <td style="text-align:right;"> 771721156 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2019-07-31 </td>
+   <td style="text-align:right;"> 60938.78 </td>
+   <td style="text-align:right;"> 61089.67 </td>
+   <td style="text-align:right;"> 59393.13 </td>
+   <td style="text-align:right;"> 59670.60 </td>
+   <td style="text-align:right;"> 785402987 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2019-08-31 </td>
+   <td style="text-align:right;"> 59512.63 </td>
+   <td style="text-align:right;"> 59755.35 </td>
+   <td style="text-align:right;"> 54702.14 </td>
+   <td style="text-align:right;"> 56739.53 </td>
+   <td style="text-align:right;"> 710500097 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2019-09-30 </td>
+   <td style="text-align:right;"> 56861.56 </td>
+   <td style="text-align:right;"> 58525.39 </td>
+   <td style="text-align:right;"> 55982.14 </td>
+   <td style="text-align:right;"> 57320.30 </td>
+   <td style="text-align:right;"> 864901568 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2019-10-31 </td>
+   <td style="text-align:right;"> 57245.86 </td>
+   <td style="text-align:right;"> 58628.93 </td>
+   <td style="text-align:right;"> 55086.12 </td>
+   <td style="text-align:right;"> 57783.02 </td>
+   <td style="text-align:right;"> 727179034 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2019-11-30 </td>
+   <td style="text-align:right;"> 58294.43 </td>
+   <td style="text-align:right;"> 59651.52 </td>
+   <td style="text-align:right;"> 58250.46 </td>
+   <td style="text-align:right;"> 58851.05 </td>
+   <td style="text-align:right;"> 398021467 </td>
+  </tr>
+</tbody>
+</table></div>
+</body>
+</html>

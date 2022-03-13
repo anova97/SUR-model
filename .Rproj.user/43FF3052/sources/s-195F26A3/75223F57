@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1647176494772.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2017223107",
+    "id" : "75223F57",
+    "lastKnownWriteTime" : 1647177342,
+    "last_content_update" : 1647177342100,
+    "path" : "~/Documents/GitHub/SUR model/ProjektCAPM.Rmd",
+    "project_path" : "ProjektCAPM.Rmd",
+    "properties" : {
+        "cursorPosition" : "216,0",
+        "scrollLine" : "155"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

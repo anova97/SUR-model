@@ -1,0 +1,226 @@
+---
+title: "Budowa modelu SUR"
+author: "Jakub Augustynek"
+date: "12/10/2019"
+output:
+  html_document: default
+---
+
+Celem tego projektu jest zbudowanie modelu SUR, czyli układu pozornie niepowiązanych równań regresji. Model zbudowany będzie dla stóp zwrotu z indeksów giełdowych sektorów takich jak:  
+
+* banki
+* budownictwo
+* chemia
+* energia
+* info
+* media
+* nieruchomości
+* paliwa
+* spożywczy
+* telkom
+
+Wszystkie z indeksów bazują na polskiej giełdzie, więc czynniki losowe równań regresji mogą być skorelowane. Stopy zwrotu z indeksów sektorowych zostaną objaśnione za pomocą stóp zwrotu dla indeksu WIG. <br/>  
+W celu sprawdzenia istotności wyestymowanych parametrów obliczona zostanie statystyka GRS. <br/> <br/>
+
+Dane pobrane zostały ze strony (https://stooq.pl). Pobrano miesięczne dane historyczne indeksów od stycznia 2010 roku do grudnia 2019. <br/> Wśród indesków jest WIG oraz 10 indeksów sektorowych. 
+```{r dane, warning=FALSE, message=FALSE}
+#wczytywanie danych
+library(readr)
+library(kableExtra)
+#indeks wig
+wig <- read_csv("data/wig_m 2.csv")
+
+#indeksy sektorowe
+wig_banki <- read_csv("data/wig_banki.csv")
+wig_budow <- read_csv("data/wig_budow.csv")
+wig_chemia <- read_csv("data/wig_chemia.csv")
+wig_energ <- read_csv("data/wig_energ.csv")
+wig_info <- read_csv("data/wig_info.csv")
+wig_info<-wig_info[(226:344),]
+wig_media <- read_csv("data/wig_media.csv")
+wig_nrchom <- read_csv("data/wig_nrchom.csv")
+wig_paliwa <- read_csv("data/wig_paliwa.csv")
+wig_spozyw <- read_csv("data/wig_spozyw.csv")
+wig_telkom <- read_csv("data/wig_telkom.csv")
+
+
+wig %>% kable() %>%
+    kable_styling(bootstrap_options = c('striped', 'condensed')) %>%
+    scroll_box(height = "200px")
+```
+
+Dla wartości zamknięcia obliczono logarytmiczne stopy zwrotu. 
+
+```{r stopy}
+stopy<-matrix(NA, (nrow(wig)-1), 11)
+
+for(i in 1:(nrow(wig)-1))
+{
+  stopy[i,1]=log(wig$Zamkniecie[i+1]/wig$Zamkniecie[i])
+  stopy[i,2]=log(wig_banki$Zamkniecie[i+1]/wig_banki$Zamkniecie[i])
+  stopy[i,3]=log(wig_budow$Zamkniecie[i+1]/wig_budow$Zamkniecie[i])
+  stopy[i,4]=log(wig_chemia$Zamkniecie[i+1]/wig_chemia$Zamkniecie[i])
+  stopy[i,5]=log(wig_energ$Zamkniecie[i+1]/wig_energ$Zamkniecie[i])
+  stopy[i,6]=log(wig_info$Zamkniecie[i+1]/wig_info$Zamkniecie[i])
+  stopy[i,7]=log(wig_media$Zamkniecie[i+1]/wig_media$Zamkniecie[i])
+  stopy[i,8]=log(wig_nrchom$Zamkniecie[i+1]/wig_nrchom$Zamkniecie[i])
+  stopy[i,9]=log(wig_paliwa$Zamkniecie[i+1]/wig_paliwa$Zamkniecie[i])
+  stopy[i,10]=log(wig_spozyw$Zamkniecie[i+1]/wig_spozyw$Zamkniecie[i])
+  stopy[i,11]=log(wig_telkom$Zamkniecie[i+1]/wig_telkom$Zamkniecie[i])
+  
+}
+
+colnames(stopy)<-c("wig", "banki", "budow", "chemia", "energ", "info", "media", "nrchom", "paliwa", "spozyw", "telkom")
+
+
+```
+
+Następnie stopy zwrotu skorygowano - stopa wolna od ryzyka (3%).
+```{r stopy 2}
+for(i in 1:(nrow(wig)-1))
+{
+  stopy[i,1]=stopy[i,1]-((0.03)/12)
+  stopy[i,2]=stopy[i,2]-((0.03)/12)
+  stopy[i,3]=stopy[i,3]-((0.03)/12)
+  stopy[i,4]=stopy[i,4]-((0.03)/12)
+  stopy[i,5]=stopy[i,5]-((0.03)/12)
+  stopy[i,6]=stopy[i,6]-((0.03)/12)
+  stopy[i,7]=stopy[i,7]-((0.03)/12)
+  stopy[i,8]=stopy[i,8]-((0.03)/12)
+  stopy[i,9]=stopy[i,9]-((0.03)/12)
+  stopy[i,10]=stopy[i,10]-((0.03)/12)
+  stopy[i,11]=stopy[i,11]-((0.03)/12)
+  
+}
+stopy %>% kable() %>%
+    kable_styling(bootstrap_options = c('striped', 'condensed')) %>%
+    scroll_box(height = "200px")
+```
+
+Następnym etapem jest utworzenie modeli MNK, w których stopy zwrotu indeksów sektorowych są wyjaśniane przez  stopy zwrotu indeksu głównego (WIG).
+
+```{r estymacja}
+#estymowanie rownanie po rownaniu mnk
+m1<-lm(stopy[,"banki"]~stopy[,"wig"])
+m2<-lm(stopy[,"budow"]~stopy[,"wig"])
+m3<-lm(stopy[,"chemia"]~stopy[,"wig"])
+m4<-lm(stopy[,"energ"]~stopy[,"wig"])
+m5<-lm(stopy[,"info"]~stopy[,"wig"])
+m6<-lm(stopy[,"media"]~stopy[,"wig"])
+m7<-lm(stopy[,"nrchom"]~stopy[,"wig"])
+m8<-lm(stopy[,"paliwa"]~stopy[,"wig"])
+m9<-lm(stopy[,"spozyw"]~stopy[,"wig"])
+m10<-lm(stopy[,"telkom"]~stopy[,"wig"])
+```
+
+Dla wyestymowanych modeli obliczona będzie statystyka GRS. Aby obliczyć jej wartość, potrzebna będzie:
+
+* macierz sigma - macierz wariancji-kowariancji, 
+* wektor współczynników alfa, a także 
+* średnia i wariancja wartości stóp zwrotu indeksu WIG. <br/>
+
+Wartości reszt, będących różnicą pomiędzy wartością empiryczną, a teoretyczną zmiennej objaśnianej, a także wartości współczynników alfa zapisano w macierzy. <br/>
+Obliczono średnią oraz odwrotność wariancji dla stóp zwrotu indeksu wig. 
+
+```{r reszty}
+reszty<-matrix(0, (nrow(wig)-1), 10)
+for(i in 1:(nrow(wig)-1))
+{
+  reszty[i,1]<-m1$residuals[i]
+  reszty[i,2]<-m2$residuals[i]
+  reszty[i,3]<-m3$residuals[i]
+  reszty[i,4]<-m4$residuals[i]
+  reszty[i,5]<-m5$residuals[i]
+  reszty[i,6]<-m6$residuals[i]
+  reszty[i,7]<-m7$residuals[i]
+  reszty[i,8]<-m8$residuals[i]
+  reszty[i,9]<-m9$residuals[i]
+  reszty[i,10]<-m10$residuals[i]
+}
+colnames(reszty)<-c("banki", "budow", "chemia", "energ", "info", "media", "nrchom", "paliwa", "spozyw", "telkom")
+
+#zapisanie wartosci wsp alfa wystymowanych modeli 
+alfa <-matrix(data = 0, nrow = 10, ncol = 1)
+alfa[1,1] <- m1$coefficients[1]
+alfa[2,1] <- m2$coefficients[1]
+alfa[3,1] <- m3$coefficients[1]
+alfa[4,1] <- m4$coefficients[1]
+alfa[5,1] <- m5$coefficients[1]
+alfa[6,1] <- m6$coefficients[1]
+alfa[7,1] <- m7$coefficients[1]
+alfa[8,1] <- m8$coefficients[1]
+alfa[9,1] <- m9$coefficients[1]
+alfa[10,1] <- m10$coefficients[1]
+rownames(alfa)<-c("banki", "budow", "chemia", "energ", "info", "media", "nrchom", "paliwa", "spozyw", "telkom")
+
+sr_wig=(mean(stopy[,1]))
+wariancja<-1/var(stopy[,1])
+
+```
+
+Za pomocą testu ADF sprawdzono, czy reszty modeli są stacjonarne. <br/>
+Hipoteza zerowa tego testu oznacza niestacjonarność. 
+```{r adf, warning=FALSE}
+library(tseries)
+adf.test(reszty[,1],alternative = c("stationary", "explosive"))
+adf.test(reszty[,2],alternative = c("stationary", "explosive"))
+adf.test(reszty[,3],alternative = c("stationary", "explosive"))
+adf.test(reszty[,4],alternative = c("stationary", "explosive"))
+adf.test(reszty[,5],alternative = c("stationary", "explosive"))
+adf.test(reszty[,6],alternative = c("stationary", "explosive"))
+adf.test(reszty[,7],alternative = c("stationary", "explosive"))
+adf.test(reszty[,8],alternative = c("stationary", "explosive"))
+adf.test(reszty[,9],alternative = c("stationary", "explosive"))
+adf.test(reszty[,10],alternative = c("stationary", "explosive"))
+```
+
+Przyjęto poziom istotności 0,05. <br/>
+Wartość p dla wykonanych testów jest mniejsza od poziomu istotności, oznacza to, że hipotezę zerową, mówiącą o niestacjonarności należy odrzucić, reszty modelu są stacjonarne. <br/>  
+
+Obliczono macierz sigma - macierz wariancji - kowariancji. 
+```{r sigma}
+#macierz sigma
+dl<-nrow(wig)-1
+sigma<-matrix(NA, 10, 10)
+reszty<-as.matrix(reszty)
+
+sigma<-t(reszty)%*%reszty/dl
+sigma %>% kable() %>%
+    kable_styling(bootstrap_options = c('striped', 'condensed')) %>%
+    scroll_box(height = "200px")
+```
+Kowariancja nie przyjmuje wartości zerowych, oznacza to, że składniki losowe modeli są ze sobą powiązane. 
+<br/>
+Obliczenie statystyki GRS da odpowiedź na pytanie, czy indeks WIG jest jedyną zmienną wpływającą na zmianę wartości indeksów sektorowych. <br/>
+Hipoteza zerowa statystyki GRS mówi o tym, że wartości współczynników alfa są równe 0.
+
+```{r GRS}
+T=(nrow(wig)-1)
+N=10
+L=1
+# wektor wsp alfa
+talfa<-t(alfa)
+# odwrocona macierz sigma
+odwr<-solve(sigma)
+
+#statystyka GRS
+GRS<-T/N * ((T-N-L)/(T-L-1)) * ((talfa%*%odwr%*%alfa)/(1+sr_wig*wariancja*sr_wig))
+GRS
+
+#wartość p
+pf(GRS, N, T-N-L, lower.tail = FALSE)
+```
+
+Wartość p dla przeprowadzonego testu jest mniejsza od poziomu istotności, hipotezę zerową mówiącą, że wartość współczynników alfa jest równa 0 należy więc odrzucić. Świadczy to o tym, że sektory nie są powiązane tylko z indeksem WIG. <br/>
+
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
